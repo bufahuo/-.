@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>首页二</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="../css/public.css" media="all">
+    <style>
+        .layui-card {border:1px solid #f2f2f2;border-radius:5px;}
+        .icon {margin-right:10px;color:#1aa094;}
+        .icon-cray {color:#ffb800!important;}
+        .icon-blue {color:#1e9fff!important;}
+        .icon-tip {color:#ff5722!important;}
+        .layuimini-qiuck-module {text-align:center;margin-top: 10px}
+        .layuimini-qiuck-module a i {display:inline-block;width:100%;height:60px;line-height:60px;text-align:center;border-radius:2px;font-size:30px;background-color:#F8F8F8;color:#333;transition:all .3s;-webkit-transition:all .3s;}
+        .layuimini-qiuck-module a cite {position:relative;top:2px;display:block;color:#666;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;font-size:14px;}
+        .welcome-module {width:100%;height:210px;}
+        .panel {background-color:#fff;border:1px solid transparent;border-radius:3px;-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);box-shadow:0 1px 1px rgba(0,0,0,.05)}
+        .panel-body {padding:10px}
+        .panel-title {margin-top:0;margin-bottom:0;font-size:12px;color:inherit}
+        .label {display:inline;padding:.2em .6em .3em;font-size:75%;font-weight:700;line-height:1;color:#fff;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25em;margin-top: .3em;}
+        .layui-red {color:red}
+        .main_btn > p {height:40px;}
+        .layui-bg-number {background-color:#F8F8F8;}
+        .layuimini-notice:hover {background:#f6f6f6;}
+        .layuimini-notice {padding:7px 16px;clear:both;font-size:12px !important;cursor:pointer;position:relative;transition:background 0.2s ease-in-out;}
+        .layuimini-notice-title,.layuimini-notice-label {
+            padding-right: 70px !important;text-overflow:ellipsis!important;overflow:hidden!important;white-space:nowrap!important;}
+        .layuimini-notice-title {line-height:28px;font-size:14px;}
+        .layuimini-notice-extra {position:absolute;top:50%;margin-top:-8px;right:16px;display:inline-block;height:16px;color:#999;}
+    </style>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md8">
+                <div class="layui-row layui-col-space15">
+                    <div class="layui-col-md6">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-warning icon"></i>数据统计</div>
+                            <div class="layui-card-body">
+                                <div class="welcome-module">
+                                    <div class="layui-row layui-col-space10">
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-blue">实时</span>
+                                                        <h5>用户统计</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins">56235</h1>
+                                                        <small>当前分类总记录数</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-cyan">实时</span>
+                                                        <h5>剩余车辆数</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins">254</h1>
+                                                        <small>当前分类总记录数</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-orange">实时</span>
+                                                        <h5>浏览总计</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins">65427</h1>
+                                                        <small>当前分类总记录数</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-col-xs6">
+                                            <div class="panel layui-bg-number">
+                                                <div class="panel-body">
+                                                    <div class="panel-title">
+                                                        <span class="label pull-right layui-bg-green">实时</span>
+                                                        <h5>订单统计</h5>
+                                                    </div>
+                                                    <div class="panel-content">
+                                                        <h1 class="no-margins">5246</h1>
+                                                        <small>当前分类总记录数</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md6">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-credit-card icon icon-blue"></i>快捷入口</div>
+                            <div class="layui-card-body">
+                                <div class="welcome-module">
+                                    <div class="layui-row layui-col-space10 layuimini-qiuck">
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" layuimini-content-href="page/menu.html" data-title="菜单管理" data-icon="fa fa-window-maximize">
+                                                <i class="fa fa-automobile"></i>
+                                                <cite>车辆管理</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" layuimini-content-href="page/setting.html" data-title="系统设置" data-icon="fa fa-gears">
+                                                <i class="fa fa-line-chart"></i>
+                                                <cite>客户信息</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" layuimini-content-href="page/table.html" data-title="表格示例" data-icon="fa fa-file-text">
+                                                <i class="fa fa-group"></i>
+                                                <cite>员工管理</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" layuimini-content-href="page/icon.html" data-title="图标列表" data-icon="fa fa-dot-circle-o">
+                                                <i class="fa fa-dot-circle-o"></i>
+                                                <cite>问题反馈</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" layuimini-content-href="page/form.html" data-title="表单示例" data-icon="fa fa-calendar">
+                                                <i class="fa fa-gears"></i>
+                                                <cite>故障报修管理</cite>
+                                            </a>
+                                        </div>
+                                        <div class="layui-col-xs3 layuimini-qiuck-module">
+                                            <a href="javascript:;" layuimini-content-href="page/404.html" data-title="404页面" data-icon="fa fa-hourglass-end">
+                                                <i class="fa fa-mortar-board"></i>
+                                                <cite>账号管理</cite>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="layui-col-md12">
+                        <div class="layui-card">
+                            <div class="layui-card-header"><i class="fa fa-line-chart icon"></i>报表统计</div>
+                            <div class="layui-card-body">
+                                <div id="echarts-records" style="width: 100%;min-height:500px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-col-md4">
+
+                <div class="layui-card">
+                    <div class="layui-card-header"><i class="fa fa-bullhorn icon icon-tip"></i>系统公告</div>
+                    <div class="layui-card-body layui-text">
+                        <div class="layuimini-notice">
+                            <div class="layuimini-notice-title">收费标准调整</div>
+                            <div class="layuimini-notice-extra">2019-07-11 23:06</div>
+                            <div class="layuimini-notice-content layui-hide">
+                                经济型车型：日租金调整为 188 元 / 天，周租金（7 天）为 1188 元，月租金（30 天）为 3888 元。相比调整前，日租金下调 12 元，周租金下调 84 元，月租金下调 372 元。<br>
+                                舒适型车型：日租金调整为 288 元 / 天，周租金为 1788 元，月租金为 5688 元。调整后，周租金节省 112 元，月租金节省 372 元。<br>
+                                豪华型车型：日租金调整为 688 元 / 天，周租金为 4288 元，月租金为 13888 元。此次调整后，月租金降低 1212 元。<br>
+                                SUV 车型：日租金调整为 328 元 / 天，周租金为 1988 元，月租金为 6288 元。周租金较之前减少 112 元，月租金减少 312 元。<br>
+                                押金说明：新用户押金仍为299元，已缴纳押金用户无需额外补缴。支持支付宝芝麻信用分650分及以上用户免押金骑行。<br>
+                                <br>
+                                本次调价旨在提升车辆维护水平与调度效率，为您提供更优质的骑行体验。感谢您的理解与支持！<br>
+                                
+                            </div>
+                        </div>
+                        <div class="layuimini-notice">
+                            <div class="layuimini-notice-title">优惠活动</div>
+                            <div class="layuimini-notice-extra">2019-07-11 12:57</div>
+                            <div class="layuimini-notice-content layui-hide">
+                                新用户注册礼：新用户成功注册汽车租赁系统账号，即可获得一张 100 元无门槛租车优惠券，优惠券有效期为注册之日起 30 天，可用于系统内任意车型租赁。<br>
+                                长租优惠：租赁期限超过 30 天（含 30 天）的用户，除享受月租金优惠价格外，还可额外获得一次免费车辆清洁服务；租赁期限超过 90 天（含 90 天）的用户，在上述优惠基础上，再享租金 9.5 折优惠。<br>
+                                节日特惠：在即将到来的中秋、国庆双节期间（具体时间以系统通知为准），所有车型租赁均享受日租金 8.5 折优惠，同时租满 3 天及以上赠送 1 天免费租车权益（限同一车型使用，不可折现）。<br>
+                            </div>
+                        </div>
+                        <div class="layuimini-notice">
+                            <div class="layuimini-notice-title">服务调整</div>
+                            <div class="layuimini-notice-extra">2019-07-05 14:28</div>
+                            <div class="layuimini-notice-content layui-hide">
+                                取还车网点新增：为方便用户就近取还车，系统新增 3 个取还车网点，分别位于城东汽车客运站旁、城西商业中心地下停车场、城南高铁站出口右侧，网点营业时间为 8:00-20:00，支持 24 小时预约取还车服务。<br>
+                                车辆保险升级：即日起，所有租赁车辆均默认包含车辆损失险、第三者责任险（保额 100 万元）、车上人员责任险（每座保额 10 万元），用户无需额外付费即可享受更全面的保险保障，若需提高保险保额，可在下单时自主选择升级。<br>
+                                为解决用户租车期间的突发状况，系统升级道路救援服务体系。即日起，用户在租赁期间遇到车辆故障、爆胎、没电等问题，拨打客服热线即可申请免费道路救援。<br>
+                            </div>
+                        </div>
+                        <div class="layuimini-notice">
+                            <div class="layuimini-notice-title">温馨提示</div>
+                            <div class="layuimini-notice-extra">2019-07-04 11:02</div>
+                            <div class="layuimini-notice-content layui-hide">
+                                请用户在下单租车前，仔细核对车型、租赁价格、优惠活动及取还车网点等信息，确认无误后再提交订单。<br>
+                                优惠券使用需遵守相关规则，具体使用说明可在系统 “我的优惠券” 页面查看，优惠券逾期未使用将自动失效，不予补发。<br>
+                                租车期间，请爱护车辆，遵守交通规则，若发生交通事故或车辆故障，应第一时间联系客服，并按照客服指引处理，避免造成不必要的损失。<br>
+                                系统后续将持续优化服务内容和价格体系，相关变动信息将通过系统公告、短信等方式及时通知用户，请您保持预留手机号畅通。<br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<div class="layui-card">
+                    <div class="layui-card-header"><i class="fa fa-fire icon"></i>版本信息</div>
+                    <div class="layui-card-body layui-text">
+                        <table class="layui-table">
+                            <colgroup>
+                                <col width="100">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td>项目名称</td>
+                                <td>
+                                    汽车租赁系统
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>主要特色</td>
+                                <td>零门槛 / 极简</td>
+                            </tr>
+                            <tr>
+                                <td>开发者</td>
+                                <td>不发火</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+						<div class="layui-card">
+							<div class="layui-card-header"><i class="fa fa-paper-plane-o icon"></i>请遵守使用规则</div>
+							<div class="layui-card-body layui-text layadmin-text">
+                        <p>本模板基于layui2.5.4以及font-awesome-4.7.0进行实现。layui开发文档地址：<a class="layui-btn layui-btn-xs layui-btn-danger" target="_blank" href="http://www.layui.com/doc">layui文档</a ></p >
+
+                    </div>
+						</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script>
+    layui.use(['layer', 'miniTab','echarts'], function () {
+        var $ = layui.jquery,
+            layer = layui.layer,
+            miniTab = layui.miniTab,
+            echarts = layui.echarts;
+
+        miniTab.listen();
+
+        /**
+         * 查看公告信息
+         **/
+        $('body').on('click', '.layuimini-notice', function () {
+            var title = $(this).children('.layuimini-notice-title').text(),
+                noticeTime = $(this).children('.layuimini-notice-extra').text(),
+                content = $(this).children('.layuimini-notice-content').html();
+            var html = '<div style="padding:15px 20px; text-align:justify; line-height: 22px;border-bottom:1px solid #e2e2e2;background-color: #2f4056;color: #ffffff">\n' +
+                '<div style="text-align: center;margin-bottom: 20px;font-weight: bold;border-bottom:1px solid #718fb5;padding-bottom: 5px"><h4 class="text-danger">' + title + '</h4></div>\n' +
+                '<div style="font-size: 12px">' + content + '</div>\n' +
+                '</div>\n';
+            parent.layer.open({
+                type: 1,
+                title: '系统公告'+'<span style="float: right;right: 1px;font-size: 12px;color: #b1b3b9;margin-top: 1px">'+noticeTime+'</span>',
+                area: '300px;',
+                shade: 0.8,
+                id: 'layuimini-notice',
+                btn: ['查看', '取消'],
+                btnAlign: 'c',
+                moveType: 1,
+                content:html,
+                success: function (layero) {
+                    var btn = layero.find('.layui-layer-btn');
+                    btn.find('.layui-layer-btn0').attr({
+                        href: 'https://gitee.com/zhongshaofa/layuimini',
+                        target: '_blank'
+                    });
+                }
+            });
+        });
+
+        /**
+         * 报表功能
+         */
+        var echartsRecords = echarts.init(document.getElementById('echarts-records'), 'walden');
+        var optionRecords = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['车辆库存','订单量','营收','直接访问','搜索引擎']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一','周二','周三','周四','周五','周六','周日']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name:'车辆库存',
+                    type:'line',
+                    data:[120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name:'订单量',
+                    type:'line',
+                    data:[220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name:'营收',
+                    type:'line',
+                    data:[150, 232, 201, 154, 190, 330, 410]
+                },
+                {
+                    name:'直接访问',
+                    type:'line',
+                    data:[320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name:'搜索引擎',
+                    type:'line',
+                    data:[820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        };
+        echartsRecords.setOption(optionRecords);
+
+        // echarts 窗口缩放自适应
+        window.onresize = function(){
+            echartsRecords.resize();
+        }
+
+    });
+</script>
+</body>
+</html>

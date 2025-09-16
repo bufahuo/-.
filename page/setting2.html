@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>员工信息登记</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../css/public.css" media="all">
+    <style>
+        .layui-form-item .layui-input-company {width: auto;padding-right: 10px;line-height: 38px;}
+    </style>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+        <div class="layui-form layuimini-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label required">员工姓名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="employeeName" lay-verify="required" lay-reqtext="员工姓名不能为空" placeholder="请输入员工姓名"  value="" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label required">身份证号码</label>
+                <div class="layui-input-block">
+                    <input type="text" name="idCard" lay-verify="required|idCard" lay-reqtext="身份证号码不能为空" placeholder="请输入18位身份证号码"  value="" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label required">家庭住址</label>
+                <div class="layui-input-block">
+                    <input type="text" name="homeAddress" lay-verify="required" lay-reqtext="家庭住址不能为空" placeholder="请输入详细家庭住址"  value="" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label required">联系方式</label>
+                <div class="layui-input-block">
+                    <input type="text" name="contactPhone" lay-verify="required|phone" lay-reqtext="联系方式不能为空" placeholder="请输入11位手机号码"  value="" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label required">薪水</label>
+                <div class="layui-input-inline" style="width: 150px;">
+                    <input type="text" name="salary" lay-verify="required|number|positive" lay-reqtext="薪水不能为空" placeholder="请输入月薪金额"  value="" class="layui-input">
+                </div>
+                <div class="layui-input-inline layui-input-company">元/月</div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label required">入职时间</label>
+                <div class="layui-input-block">
+                    <!-- 修复：将原生date改为普通input，通过laydate渲染 -->
+                    <input type="text" name="entryDate" lay-verify="required" lay-reqtext="入职时间不能为空" 
+                           placeholder="请选择入职时间" class="layui-input" id="entryDate">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label required">岗位</label>
+                <div class="layui-input-block">
+                    <select name="position" lay-verify="required" lay-reqtext="岗位不能为空" class="layui-select">
+                        <option value="">请选择岗位</option>
+                        <option value="vehicleManager">车辆管理员</option>
+                        <option value="customerService">客户服务员</option>
+                        <option value="financialStaff">财务人员</option>
+                        <option value="maintenanceStaff">维修人员</option>
+                        <option value="receptionist">前台接待</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">备注信息</label>
+                <div class="layui-input-block">
+                    <textarea name="remark" class="layui-textarea" placeholder="请输入员工其他补充信息（如技能特长、紧急联系人等）"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="setting">确认保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'layer', 'laydate'], function () {  // 新增：引入laydate模块
+        var form = layui.form
+            , layer = layui.layer
+            , laydate = layui.laydate;  // 新增：声明laydate
+
+        // 新增：渲染入职时间选择器
+        laydate.render({
+            elem: '#entryDate',  // 绑定到ID为entryDate的输入框
+            format: 'yyyy-MM-dd',  // 日期格式
+            max: new Date(),  // 最大可选日期为今天（不能选择未来日期）
+            done: function(value){
+                // 选择日期后自动触发表单验证
+                form.validate('entryDate');
+            }
+        });
+
+        // 自定义表单校验规则
+        form.verify({
+            idCard: function(value) {
+                if (value.length !== 18 || !/^\d{17}[\dXx]$/.test(value)) {
+                    return '请输入有效的18位身份证号码（最后一位可为X）';
+                }
+            },
+            phone: function(value) {
+                if (!/^1[3-9]\d{9}$/.test(value)) {
+                    return '请输入有效的11位手机号码';
+                }
+            },
+            positive: function(value) {
+                if (parseFloat(value) <= 0) {
+                    return '请输入大于0的薪水金额';
+                }
+            }
+        });
+
+        // 监听提交
+        form.on('submit(setting)', function (data) {
+            parent.layer.alert(JSON.stringify(data.field), {
+                title: '最终的员工信息提交结果'
+            });
+            return false;
+        });
+
+    });
+</script>
+</body>
+</html>

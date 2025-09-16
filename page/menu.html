@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>员工信息管理表格</title>
+    <link rel="stylesheet" href="../lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../css/public.css" media="all">
+    <style>
+        .layui-btn:not(.layui-btn-lg ):not(.layui-btn-sm):not(.layui-btn-xs) {
+            height: 34px;
+            line-height: 34px;
+            padding: 0 8px;
+        }
+        /* 表格单元格内容过长时省略显示 */
+        .layui-table-cell {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <!-- 按钮组：新增员工（跳转表单）+ 展开/折叠 -->
+        <div class="layui-btn-group mb-3">
+            <button class="layui-btn layui-btn-normal" id="btn-add-employee">
+                <i class="layui-icon"></i> 新增员工
+            </button>
+            <button class="layui-btn" id="btn-expand">全部展开</button>
+            <button class="layui-btn layui-btn-normal" id="btn-fold">全部折叠</button>
+        </div>
+        <!-- 员工信息表格 -->
+        <table id="employee-table" class="layui-table" lay-filter="employee-table"></table>
+    </div>
+</div>
+
+<!-- 操作列模板：修改（跳转表单）、删除 -->
+<script type="text/html" id="employee-operate">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">
+        <i class="layui-icon"></i> 修改
+    </a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">
+        <i class="layui-icon"></i> 删除
+    </a>
+</script>
+
+<script src="../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script>
+    layui.use(['table', 'treetable', 'layer', 'jquery'], function () {
+        var $ = layui.jquery;
+        var table = layui.table;
+        var treetable = layui.treetable;
+        var layer = layui.layer;
+
+        // 1. 渲染员工树形表格（核心：列字段与员工信息完全匹配）
+        layer.load(2, {title: '加载员工数据...'});
+        treetable.render({
+            treeColIndex: 1,          // 树形展开列：第2列（员工及岗位）
+            treeSpid: 0,              // 顶级节点parentId（部门节点parentId=0）
+            treeIdName: 'employeeId', // 员工/部门唯一ID（与JSON一致）
+            treePidName: 'parentId',  // 父节点ID（与JSON一致）
+            elem: '#employee-table',  // 绑定表格ID
+            url: '../api/employee-data.json', // 员工数据接口（与配套JSON路径一致）
+            page: false,              // 不分页（员工数据通常按部门层级展示）
+            cols: [[
+                {type: 'numbers', title: '序号', width: 60},
+                // 员工及岗位（拼接“姓名+岗位”，部门节点仅显示部门名）
+                {
+                    field: 'name', 
+                    minWidth: 200, 
+                    title: '员工及岗位',
+                    templet: function(d) {
+                        // 部门节点（无employeeId后缀，岗位为空）
+                        if (!d.job) {
+                            return '<span style="font-weight: bold;">' + d.name + '</span>';
+                        }
+                        // 员工节点：姓名（岗位）
+                        return d.name + '（' + d.job + '）';
+                    }
+                },
+                // 性别（数字转文字）
+                {
+                    field: 'gender', 
+                    width: 80, 
+                    align: 'center', 
+                    title: '性别',
+                    templet: function(d) {
+                        var genderMap = {1: '男', 2: '女'};
+                        return genderMap[d.gender] || '未填写';
+                    }
+                },
+                // 联系方式（手机号）
+                {field: 'phone', width: 130, align: 'center', title: '联系方式'},
+                // 薪水（加单位）
+                {
+                    field: 'salary', 
+                    width: 120, 
+                    align: 'center', 
+                    title: '薪水',
+                    templet: function(d) {
+                        return d.salary ? d.salary + '元/月' : '未设置';
+                    }
+                },
+                // 入职时间（格式化日期）
+                {
+                    field: 'entryDate', 
+                    width: 120, 
+                    align: 'center', 
+                    title: '入职时间',
+                    templet: function(d) {
+                        return d.entryDate ? d.entryDate : '未填写';
+                    }
+                },
+                // 家庭住址（过长省略）
+                {
+                    field: 'address', 
+                    minWidth: 250, 
+                    title: '家庭住址',
+                    templet: function(d) {
+                        return d.address ? d.address : '未填写';
+                    }
+                },
+                // 操作列（修改/删除，与员工表单联动）
+                {templet: '#employee-operate', width: 120, align: 'center', title: '操作'}
+            ]],
+            done: function (res) {
+                layer.closeAll('loading');
+                // 数据加载失败提示
+                if (res.code !== 0) {
+                    layer.msg('员工数据加载失败：' + (res.msg || '未知错误'), {icon: 5});
+                }
+            }
+        });
+
+        // 2. 全部展开/折叠
+        $('#btn-expand').click(function () {
+            treetable.expandAll('#employee-table');
+        });
+        $('#btn-fold').click(function () {
+            treetable.foldAll('#employee-table');
+        });
+
+        // 3. 新增员工：跳转至员工信息表单（传递部门ID，默认归属当前点击部门）
+        $('#btn-add-employee').click(function () {
+            layer.open({
+                type: 2,
+                title: '新增员工信息',
+                area: ['800px', '600px'],
+                content: '../page/employee-form.html', // 员工表单页面路径
+                shade: 0.3,
+                maxmin: true
+            });
+        });
+
+        // 4. 操作列监听：修改（跳转表单带参）、删除
+        table.on('tool(employee-table)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+
+            // 跳过部门节点（仅员工节点可操作）
+            if (!data.job) return;
+
+            // 修改员工：跳转表单并传递员工ID（表单加载时回显数据）
+            if (layEvent === 'edit') {
+                layer.open({
+                    type: 2,
+                    title: '修改员工信息：' + data.name,
+                    area: ['800px', '600px'],
+                    content: '../page/employee-form.html?employeeId=' + data.employeeId, // 带员工ID传参
+                    shade: 0.3,
+                    maxmin: true
+                });
+            }
+
+            // 删除员工
+            else if (layEvent === 'del') {
+                layer.confirm('确定删除员工【' + data.name + '】吗？删除后不可恢复！', {
+                    icon: 3,
+                    title: '删除确认'
+                }, function (index) {
+                    // 模拟接口请求（实际项目替换为真实删除接口）
+                    $.ajax({
+                        url: '../api/delete-employee',
+                        type: 'POST',
+                        data: {employeeId: data.employeeId},
+                        success: function (res) {
+                            if (res.code === 0) {
+                                obj.del(); // 表格中删除该行
+                                layer.close(index);
+                                layer.msg('删除员工【' + data.name + '】成功', {icon: 1});
+                            } else {
+                                layer.msg('删除失败：' + res.msg, {icon: 5});
+                            }
+                        }
+                    });
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>

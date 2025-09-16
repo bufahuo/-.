@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>分步表单</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../lib/layui-v2.6.3/css/layui.css" media="all">
+    <link rel="stylesheet" href="../css/public.css" media="all">
+    <link rel="stylesheet" href="../js/lay-module/step-lay/step.css" media="all">
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+        <div class="layui-fluid">
+            <div class="layui-card">
+                <div class="layui-card-body" style="padding-top: 40px;">
+                    <div class="layui-carousel" id="stepForm" lay-filter="stepForm" style="margin: 0 auto;">
+                        <div carousel-item>
+                            <!-- 第一步：填写入库车辆信息 -->
+                            <div>
+                                <form class="layui-form" id="firstStepForm" lay-filter="firstStepForm" style="margin: 0 auto;max-width: 460px;padding-top: 40px;">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">汽车编号</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="carNo" placeholder="请填写汽车编号" class="layui-input" lay-verify="number" required />
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">入款金额:</label>
+                                        <div class="layui-input-block">
+                                            <input type="number" name="depositAmount" placeholder="请填写入款金额" value="" class="layui-input" lay-verify="number" required>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">变速箱类型:</label>
+                                        <div class="layui-input-block">
+                                            <select name="gearboxType" lay-verify="required">
+                                                <option value="手动挡" selected>手动挡</option>
+                                                <option value="自动挡">自动挡</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">入款方式:</label>
+                                        <div class="layui-input-block">
+                                            <select name="depositMethod" lay-verify="required">
+                                                <option value="现金" selected>现金</option>
+                                                <option value="微信">微信</option>
+                                                <option value="支付宝">支付宝</option>
+                                                <option value="银行卡">银行卡</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">备注说明:</label>
+                                        <div class="layui-input-block">
+                                            <textarea name="remark" placeholder="入款备注" value="" class="layui-textarea"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <div class="layui-input-block">
+                                            <button class="layui-btn" lay-submit lay-filter="formStep">
+                                                &emsp;下一步&emsp;
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- 第二步：确认入款信息 -->
+                            <div>
+                                <form class="layui-form" style="margin: 0 auto;max-width: 460px;padding-top: 40px;">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">汽车编号:</label>
+                                        <div class="layui-input-block">
+                                            <div id="confirmCarNo" class="layui-form-mid layui-word-aux"></div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">入款金额:</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-form-mid layui-word-aux">
+                                                <span id="confirmDepositAmount" style="font-size: 18px;color: #333;"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">变速箱类型:</label>
+                                        <div class="layui-input-block">
+                                            <div id="confirmGearboxType" class="layui-form-mid layui-word-aux"></div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">入款方式:</label>
+                                        <div class="layui-input-block">
+                                            <div id="confirmDepositMethod" class="layui-form-mid layui-word-aux"></div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">备注说明:</label>
+                                        <div class="layui-input-block">
+                                            <div id="confirmRemark" class="layui-form-mid layui-word-aux"></div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <div class="layui-input-block">
+                                            <button type="button" class="layui-btn layui-btn-primary pre">上一步</button>
+                                            <button class="layui-btn" lay-submit lay-filter="formStep2">
+                                                &emsp;确认入款&emsp;
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- 第三步：完成页 -->
+                            <div>
+                                <div style="text-align: center;margin-top: 90px;">
+                                    <i class="layui-icon layui-circle"
+                                       style="color: white;font-size:30px;font-weight:bold;background: #52C41A;padding: 20px;line-height: 80px;">&#xe605;</i>
+                                    <div style="font-size: 24px;color: #333;font-weight: 500;margin-top: 30px;">
+                                        入款成功
+                                    </div>
+                                    <div style="font-size: 14px;color: #666;margin-top: 20px;">预计两小时到账</div>
+                                </div>
+                                <div style="text-align: center;margin-top: 50px;">
+                                    <button class="layui-btn next" id="resetBtn">再入一笔</button>
+                                    <button class="layui-btn layui-btn-primary" id="viewBillBtn">查看账单</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../lib/layui-v2.6.3/layui.js" charset="utf-8"></script>
+<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script>
+    // 等待Layui完全加载（避免异步加载导致的组件未就绪）
+    window.onload = function() {
+        layui.use(['form', 'step', 'layer', 'carousel'], function () {
+            var $ = layui.$,
+                form = layui.form,
+                step = layui.step,
+                layer = layui.layer,
+                carousel = layui.carousel;
+
+            // 1. 初始化轮播（增加success回调确保实例可用）
+            var carouselIns;
+            carousel.render({
+                elem: '#stepForm',
+                anim: 'fade',
+                autoplay: false,
+                indicator: 'none',
+                arrow: 'none',
+                loop: false,
+                success: function(ins) {
+                    carouselIns = ins; // 确保轮播实例正确赋值
+                }
+            });
+
+            // 2. 初始化步骤条（同样增加success回调）
+            var stepIns;
+            step.render({
+                elem: '#stepForm',
+                filter: 'stepForm',
+                width: '100%',
+                stepWidth: '750px',
+                height: '500px',
+                stepItems: [{
+                    title: '填写入库车辆信息'
+                }, {
+                    title: '确认入库车辆信息'
+                }, {
+                    title: '完成'
+                }],
+                success: function(ins) {
+                    stepIns = ins; // 确保步骤条实例正确赋值
+                }
+            });
+
+            // 3. 同步第一步数据到确认页（原逻辑保留）
+            function syncFirstStepData() {
+                const formData = form.val('firstStepForm');
+                $('#confirmCarNo').text(formData.carNo || '');
+                $('#confirmDepositAmount').text(`${formData.depositAmount || 0} 元`);
+                $('#confirmGearboxType').text(formData.gearboxType || '');
+                $('#confirmDepositMethod').text(formData.depositMethod || '');
+                $('#confirmRemark').text(formData.remark || '无备注');
+            }
+
+            // 4. 第一步提交（原逻辑保留）
+            form.on('submit(formStep)', function () {
+                syncFirstStepData();
+                step.next('#stepForm');
+                carouselIns && carouselIns.slide('next');
+                return false;
+            });
+
+            // 5. 第二步提交（原逻辑保留）
+            form.on('submit(formStep2)', function () {
+                step.next('#stepForm');
+                carouselIns && carouselIns.slide('next');
+                return false;
+            });
+
+            // 6. 上一步按钮（原逻辑保留）
+            $('.pre').click(function () {
+                step.pre('#stepForm');
+                carouselIns && carouselIns.slide('prev');
+            });
+
+            // 7. 查看账单按钮（原逻辑保留）
+            $('#viewBillBtn').click(function () {
+                layer.open({
+                    title: '账单信息',
+                    type: 1,
+                    content: '<div style="padding: 20px;"><p>汽车编号: ' + $('#confirmCarNo').text() + '</p><p>入款金额: ' + $('#confirmDepositAmount').text() + '</p><p>交易时间: ' + new Date().toLocaleString() + '</p><p>交易状态: 已完成</p></div>',
+                    area: ['300px', '220px'],
+                    btn: ['关闭'],
+                    btnAlign: 'c'
+                });
+            });
+
+            // 8. 终极修复：再入一笔按钮（强制绑定+兜底逻辑）
+            document.getElementById('resetBtn').onclick = function() {
+                try {
+                    // ① 重置表单数据（直接操作DOM，不依赖form.val兼容性）
+                    document.querySelector('input[name="carNo"]').value = '';
+                    document.querySelector('input[name="depositAmount"]').value = '';
+                    document.querySelector('select[name="gearboxType"]').value = '手动挡';
+                    document.querySelector('select[name="depositMethod"]').value = '现金';
+                    document.querySelector('textarea[name="remark"]').value = '';
+
+                    // ② 重置确认页数据
+                    document.getElementById('confirmCarNo').innerText = '';
+                    document.getElementById('confirmDepositAmount').innerText = '0 元';
+                    document.getElementById('confirmGearboxType').innerText = '';
+                    document.getElementById('confirmDepositMethod').innerText = '';
+                    document.getElementById('confirmRemark').innerText = '无备注';
+
+                    // ③ 强制切换步骤条到第一步（双重方式）
+                    if (stepIns && stepIns.go) {
+                        stepIns.go(0);
+                    } else {
+                        // 兜底：直接修改步骤条DOM样式
+                        $('.layui-step-item').eq(0).addClass('layui-step-current').siblings().removeClass('layui-step-current layui-step-done');
+                    }
+
+                    // ④ 强制切换轮播到第一步（双重方式）
+                    if (carouselIns && carouselIns.slide) {
+                        carouselIns.slide(0);
+                    } else {
+                        // 兜底：直接修改轮播面板DOM显示
+                        $('.layui-carousel-item').eq(0).addClass('layui-carousel-item-active').siblings().removeClass('layui-carousel-item-active');
+                    }
+
+                    // ⑤ 显示成功提示（确保用户感知）
+                    layer.msg('已重置表单，可继续添加', {icon: 1, time: 1500});
+                } catch (e) {
+                    // 异常兜底：即使代码报错，也强制显示提示并跳转
+                    layer.msg('表单已重置，可继续添加', {icon: 1, time: 1500});
+                    // 强制修改DOM跳转到第一步
+                    $('.layui-step-item').eq(0).addClass('layui-step-current').siblings().removeClass('layui-step-current layui-step-done');
+                    $('.layui-carousel-item').eq(0).addClass('layui-carousel-item-active').siblings().removeClass('layui-carousel-item-active');
+                    console.error('再入一笔按钮异常:', e);
+                }
+            };
+        });
+    };
+</script>
+</body>
+</html>
