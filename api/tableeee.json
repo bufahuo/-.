@@ -1,0 +1,107 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 1000,
+  "data": [
+    {
+      "id": "张三",
+      "username": "男",
+      "sex": "15356457575",
+      "city": "001",
+      "sign": "销售顾问",
+      "experience": "幸福小区",
+      "logins": 24,
+      "score": 3600
+    },
+    {
+      "id": "李四",
+      "username": "男",
+      "sex": "16547565485",
+      "city": "002",
+      "sign": "销售顾问",
+      "experience": "幸福花园",
+      "logins": 58,
+      "score": 4000
+    },
+    {
+      "id": "王五",
+      "username": "女",
+      "sex": "19587458526",
+      "city": "003",
+      "sign": "车辆调度员",
+      "experience": "花荷小区",
+      "logins": 77,
+      "score": 5000
+    },
+    {
+      "id": "张三",
+      "username": "女",
+      "sex": "16545456532",
+      "city": "004",
+      "sign": "车辆维修员",
+      "experience": "康宁苑",
+      "logins": 157,
+      "score": 6000
+    },
+    {
+      "id": "李四",
+      "username": "男",
+      "sex": "18654923765",
+      "city": "005",
+      "sign": "车辆清洁专员",
+      "experience": "龙城小区",
+      "logins": 51,
+      "score": 3000
+    },
+    {
+      "id": "王五",
+      "username": "男",
+      "sex": "16545632878",
+      "city": "006",
+      "sign": "经理",
+      "experience": "幸福小区",
+      "logins": 68,
+      "score": 12000
+    },
+    {
+      "id": "张三",
+      "username": "女",
+      "sex": "17632324595",
+      "city": "007",
+      "sign": "财务员",
+      "experience": "幸福花园",
+      "logins": 37,
+      "score": 7200
+    },
+    {
+      "id": "李四",
+      "username": "男",
+      "sex": "13249879867",
+      "city": "008",
+      "sign": "工程师",
+      "experience": "盛福花园",
+      "logins": 150,
+      "score": 8000
+    },
+    {
+      "id": "王五",
+      "username": "女",
+      "sex": "19875456568",
+      "city": "009",
+      "sign": "风控专员",
+      "experience": "学府小区",
+      "logins": 133,
+      "score": 7000
+    },
+    {
+      "id": "马六",
+      "username": "男",
+      "sex": "14632758598",
+      "city": "000",
+      "sign": "程序员",
+      "experience": "凤凰小区",
+      "logins": 25,
+      "score": 10000
+    }
+  ]
+}

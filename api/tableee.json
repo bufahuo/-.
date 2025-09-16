@@ -1,0 +1,127 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 1000,
+  "data": [
+    {
+      "id": "张三",
+      "username": "男",
+      "sex": "15356457575",
+      "city": "001",
+      "sign": "医生",
+      "experience": "幸福小区",
+      "logins": 24,
+      "wealth": "500元",
+      "classify": "车辆有异响",
+      "score": 90
+    },
+    {
+      "id": "李四",
+      "username": "男",
+      "sex": "16547565485",
+      "city": "002",
+      "sign": "教师",
+      "experience": "幸福花园",
+      "logins": 58,
+      "wealth": "300元",
+      "classify": "内饰较脏乱",
+      "score": 70
+    },
+    {
+      "id": "王五",
+      "username": "女",
+      "sex": "19587458526",
+      "city": "003",
+      "sign": "工人",
+      "experience": "花荷小区",
+      "logins": 77,
+      "wealth": "800元",
+      "classify": "取车延迟",
+      "score": 80
+    },
+    {
+      "id": "张三",
+      "username": "女",
+      "sex": "16545456532",
+      "city": "004",
+      "sign": "律师",
+      "experience": "康宁苑",
+      "logins": 157,
+      "wealth": "1000元",
+      "classify": "押金退还慢",
+      "score": 95
+    },
+    {
+      "id": "李四",
+      "username": "男",
+      "sex": "18654923765",
+      "city": "005",
+      "sign": "法医",
+      "experience": "龙城小区",
+      "logins": 51,
+      "wealth": "1000元",
+      "classify": "客服影响差",
+      "score": 81
+    },
+    {
+      "id": "王五",
+      "username": "男",
+      "sex": "16545632878",
+      "city": "006",
+      "sign": "医生",
+      "experience": "幸福小区",
+      "logins": 68,
+      "wealth": "2500元",
+      "classify": "油量不足",
+      "score": 99
+    },
+    {
+      "id": "张三",
+      "username": "女",
+      "sex": "17632324595",
+      "city": "007",
+      "sign": "护士",
+      "experience": "幸福花园",
+      "logins": 37,
+      "wealth": "300元",
+      "classify": "空调故障",
+      "score": 95
+    },
+    {
+      "id": "李四",
+      "username": "男",
+      "sex": "13249879867",
+      "city": "008",
+      "sign": "工程师",
+      "experience": "盛福花园",
+      "logins": 150,
+      "wealth": "400元",
+      "classify": "导航失灵",
+      "score": 65
+    },
+    {
+      "id": "王五",
+      "username": "女",
+      "sex": "19875456568",
+      "city": "009",
+      "sign": "园丁",
+      "experience": "学府小区",
+      "logins": 133,
+      "wealth": "2000元",
+      "classify": "合同条款模糊",
+      "score": 50
+    },
+    {
+      "id": "马六",
+      "username": "男",
+      "sex": "14632758598",
+      "city": "000",
+      "sign": "程序员",
+      "experience": "凤凰小区",
+      "logins": 25,
+      "wealth": "12000元",
+      "classify": "额外收费多",
+      "score": 100
+    }
+  ]
+}
